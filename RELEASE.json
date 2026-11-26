@@ -1,0 +1,9 @@
+{
+  "version": "1.3.0",
+  "zip_sha256": "dda21b370a459720dfb210f1630c129cef9e30dab19cb761b97595971cf10132",
+  "source_changes_for_portability": [
+    "Local-only fallback path replaced by LINEUP_CARD_DATABASE.",
+    "Private screenshot tests made optional; no personal captures included."
+  ],
+  "private_data_included": false
+}

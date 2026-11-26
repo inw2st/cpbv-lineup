@@ -1,0 +1,135 @@
+export type Skill = { id?: number; name?: string | null; lv?: number | null };
+export type Card = {
+  id?: number;
+  name?: string;
+  player?: string;
+  season?: number;
+  kind?: number;
+  stars?: number;
+  kind_label?: string;
+  live_year?: number;
+  live_version?: number | null;
+  impact_concept?: string;
+  impact_category?: number;
+  team?: string;
+  stats?: Record<string, number>;
+  differences?: Record<string, { screen: number; database: number }>;
+  base_comparison?: {
+    stat: string;
+    screen: number | null;
+    database: number;
+    status: string;
+  }[];
+};
+export type Player = {
+  slot: string;
+  name: string;
+  card: Card;
+  enhance: string;
+  batting_order: number | null;
+  launch_angle: number | null;
+  observed_live_version: number | null;
+  live_version_status: string;
+  fa: boolean;
+  pot1: string;
+  pot2: string;
+  pot3: string;
+  potentials_confirmed: Record<string, boolean>;
+  skills: Skill[];
+  skills_confirmed: number;
+  match_status: string;
+  match_message: string;
+  issues: string[];
+  review_count: number;
+  stats: Record<string, Record<string, number | null>>;
+  hand: string;
+  white_zone: string;
+  cold_zone: string;
+};
+export type Log = { id: number; time: string; message: string; level: string };
+export type State = {
+  revision: number;
+  records_version: number;
+  asset_revision: number;
+  version: string;
+  theme: "system" | "light" | "dark";
+  preview: boolean;
+  busy: "scan" | "potentials" | "skills" | null;
+  editing: boolean;
+  records: Player[];
+  status: string;
+  logs: Log[];
+  current: string | null;
+  original: string | null;
+  database: string;
+  database_count: number;
+  catalog: {
+    source: "server" | "bundled" | "manual";
+    version: string | null;
+    url: string;
+    counts: {
+      cards: number;
+      batters: number;
+      skills: number;
+      batter_skills: number;
+      pitcher_skills: number;
+    } | null;
+    published_at: string | null;
+    checked_at: string | null;
+    syncing: boolean;
+    pending: boolean;
+    error: string | null;
+  };
+  last_export: string | null;
+  metrics: {
+    players: number;
+    potentials: number;
+    skills: number;
+    review: number;
+  };
+  export_issues: string[];
+};
+export type Assets = {
+  revision: number;
+  portraits: Record<string, string>;
+  skills: Record<string, string>;
+};
+export type Options = {
+  skills: string[];
+  grades: string[];
+  awake_grades: string[];
+  stats: string[];
+  kinds: Record<string, number>;
+  concepts: Record<string, number>;
+};
+export type CatalogResult = {
+  items: Card[];
+  total: number;
+  years: number[];
+  no_year: boolean;
+  offset: number;
+  limit: number;
+};
+export type Filters = {
+  name: string;
+  stars: number | null;
+  kind: number | null;
+  season: number | "none" | null;
+  concept: number | null;
+  live_version: number | null;
+  offset: number;
+};
+export type Draft = {
+  launch_angle: string;
+  enhance: string;
+  batting_order: string;
+  fa: boolean;
+  pot1: string;
+  pot2: string;
+  pot3: string;
+  skills: { name: string; lv: string }[];
+  stats: Record<string, Record<string, string>>;
+  hand: string;
+  white_zone: string;
+  cold_zone: string;
+};
